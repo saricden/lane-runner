@@ -8,7 +8,6 @@ export default class Title extends Phaser.Scene {
   }
 
   create() {
-    console.log('TitleScene');
     const gotoCharacterSelect = () => {
       this.bgm.destroy();
       this.scene.start('scene-character-select');
@@ -34,6 +33,9 @@ export default class Title extends Phaser.Scene {
 
     this.bgm = this.sound.add('ost-lament');
     this.bgm.play({ loop: true, volume: 0.5 });
+
+    const bestScore = window.localStorage.getItem('sdn_best-score') || 0;
+    document.querySelector('.best-score').textContent = `Best score: ${bestScore}`;
 
     const deleteListeners = () => {
       document.querySelector('[data-goto="character-select"]').removeEventListener('click', gotoCharacterSelect);

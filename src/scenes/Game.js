@@ -33,8 +33,6 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-    // debugger;
-    console.log('GameScene');
     document.querySelectorAll('.menu').forEach((menu) => menu.classList.remove('on'));
     this.hudEl = document.querySelector('.hud');
     this.hudEl.classList.add('on');
@@ -82,11 +80,11 @@ export default class Game extends Phaser.Scene {
 
     const restartGame = () => {
       this.scoreEl.textContent = '0';
-      this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-      this.heartsIcon2.setAttribute('src', '/ui-heart-full.png');
-      this.heartsIcon3.setAttribute('src', '/ui-heart-full.png');
-      this.heartsIcon4.setAttribute('src', '/ui-heart-full.png');
-      this.heartsIcon5.setAttribute('src', '/ui-heart-full.png');
+      this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+      this.heartsIcon2.setAttribute('src', './ui-heart-full.png');
+      this.heartsIcon3.setAttribute('src', './ui-heart-full.png');
+      this.heartsIcon4.setAttribute('src', './ui-heart-full.png');
+      this.heartsIcon5.setAttribute('src', './ui-heart-full.png');
       this.scene.start('scene-title');
     }
 
@@ -118,11 +116,11 @@ export default class Game extends Phaser.Scene {
         }
 
         if (this.hp === 0) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-empty.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-empty.png');
           this.hudEl.classList.remove('on');
 
           this.time.delayedCall(1000, () => {
@@ -134,48 +132,55 @@ export default class Game extends Phaser.Scene {
                 ...this.enemies.getChildren()
               ]
             });
-            document.querySelector('.final-score').textContent = `Final score: ${Math.floor(this.distance / 10)}`;
+            // Update best score
+            const finalScore = Math.floor(this.distance / 10);
+            const bestScore = parseInt(window.localStorage.getItem('sdn_best-score') || 0);
+
+            if (finalScore > bestScore) {
+              window.localStorage.setItem('sdn_best-score', finalScore);
+            }
+
+            // Update UI
+            document.querySelector('.final-score').textContent = `Final score: ${finalScore}`;
             document.querySelector('.menu.game-over').classList.add('on');
 
             document.querySelector('[data-goto="restart"]').addEventListener('click', restartGame);
           });
-
-          // TODO: Goto game over screen
         }
         else if (this.hp === 1) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-empty.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-empty.png');
         }
         else if (this.hp === 2) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-empty.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-empty.png');
         }
         else if (this.hp === 3) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-empty.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-empty.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-empty.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-empty.png');
         }
         else if (this.hp === 4) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-empty.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-empty.png');
         }
         else if (this.hp === 5) {
-          this.heartsIcon1.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon2.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon3.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon4.setAttribute('src', '/ui-heart-full.png');
-          this.heartsIcon5.setAttribute('src', '/ui-heart-full.png');
+          this.heartsIcon1.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon2.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon3.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon4.setAttribute('src', './ui-heart-full.png');
+          this.heartsIcon5.setAttribute('src', './ui-heart-full.png');
         }
       },
       null,

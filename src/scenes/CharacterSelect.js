@@ -8,7 +8,6 @@ export default class CharacterSelect extends Phaser.Scene {
     }
 
     create() {
-        console.log('CharacterSelectScene');
         const playAs = (id) => {
             this.bgm.destroy();
             this.scene.start('scene-game', { id });
@@ -49,7 +48,6 @@ export default class CharacterSelect extends Phaser.Scene {
         this.bgm.play({ loop: true, volume: 0.5 });
 
         const deleteListeners = () => {
-            console.log('Clear the deck');
             charBtns.forEach((btn) => {
                 btn.removeEventListener('click', playAsSelectedCharacter);
             });
