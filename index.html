@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/sdn-logo.png" />
+    <link rel="prefetch" href="/ui-heart-full.png" />
+    <link rel="prefetch" href="/ui-heart-empty.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lane Runner</title>
+  </head>
+  <body style="display: none;">
+    <div class="menu title">
+      <div class="credits">
+        <div>
+          <img src="/sdn-logo.png" alt="saricden logo" />
+          <label>A game by Kirk M. (@saricden)</label>
+        </div>
+        <div>
+          <a href="https://pixel-boy.itch.io/" target="_blank">
+            With game assets by @pixel-boy
+          </a>
+        </div>
+      </div>
+
+      <img src="/LaneRunnerLogo.png" alt="Lane Runner" />
+
+      <div>
+        <button data-goto="character-select">Play Now</button>
+        <!-- <button data-goto="settings">Settings</button> -->
+        <button data-goto="discord">Discord</button>
+      </div>
+    </div>
+
+    <div class="menu character">
+      <header>Choose your character</header>
+      <div>
+        <button data-charsel="boy"><img src="/faces/boy.png" alt="Boy" /></button>
+        <button data-charsel="flan"><img src="/faces/flan.png" alt="Flan" /></button>
+        <button data-charsel="inspector"><img src="/faces/inspector.png" alt="Inspector" /></button>
+        <button data-charsel="knight"><img src="/faces/knight.png" alt="Knight" /></button>
+        <button data-charsel="mask_racoon"><img src="/faces/mask_racoon.png" alt="Mask Racoon" /></button>
+        <button data-charsel="master"><img src="/faces/master.png" alt="Master" /></button>
+        <button data-charsel="monkey"><img src="/faces/monkey.png" alt="Monkey" /></button>
+        <button data-charsel="ninja"><img src="/faces/ninja.png" alt="Ninja" /></button>
+        <button data-charsel="pig"><img src="/faces/pig.png" alt="Pig" /></button>
+      </div>
+      <button data-goto="title">Go back</button>
+    </div>
+
+    <div class="menu game-over">
+      <header>Game over!</header>
+
+      <div>
+        <span class="final-score"></span>
+
+        <button data-goto="restart">Restart</button>
+      </div>
+    </div>
+
+    <div class="hud">
+      <header class="score">0</header>
+
+      <footer class="hp">
+        <img src="/ui-heart-full.png" alt="" />
+        <img src="/ui-heart-full.png" alt="" />
+        <img src="/ui-heart-full.png" alt="" />
+        <img src="/ui-heart-full.png" alt="" />
+        <img src="/ui-heart-full.png" alt="" />
+      </footer>
+    </div>
+
+    <div id="game"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

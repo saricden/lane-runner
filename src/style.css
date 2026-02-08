@@ -1,0 +1,186 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: block !important;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button {
+  cursor: pointer;
+  margin: 0;
+  padding: 4px 16px;
+  border: solid 2px gold;
+  border-radius: 8px;
+  background-color: #141b1b;
+  color: gold;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.menu {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: scale(0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s, opacity 0.5s, visibility 0.5s;
+}
+
+.menu.on {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu > header {
+  font-size: 24px;
+  color: #FFF;
+  font-family: sans-serif;
+  margin-bottom: 24px;
+}
+
+.menu.title > div,
+.menu.game-over > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.menu.title .credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.menu.title .credits > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.menu.title .credits > div img {
+  width: 24px;
+  height: 24px;
+}
+
+.menu.title .credits > div a {
+  font-size: 12px;
+  color: #FFF;
+}
+
+.menu.title > img {
+  width: 292.5px;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+.menu.character div {
+  display: grid;
+  grid-template-rows: 90px 90px 90px;
+  grid-template-columns: 90px 90px 90px;
+  grid-gap: 8px;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.menu.character div button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.menu.character button img {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.final-score {
+  margin-bottom: 8px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #FFF;
+}
+
+.hud {
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+
+  transform: scale(0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s, opacity 0.5s, visibility 0.5s;
+}
+
+.hud.on {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.hud .score {
+  margin-top: 32px;
+  font-family: sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+
+.hud .hp {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.hud .hp img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
